@@ -202,8 +202,14 @@ public class SignupOne extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Name is Required");
             } else {
                 Conn c = new Conn();
-                String query = "INSERT INTO signup VALUES('"+formno+"', '"+name+"', '"+fname+"','"+dob+"', '"+gender+"', '"+email+"', '"+marital+"', '"+address+"', '"+city+"', '"+pin+"', '"+state+"')";
+                String query = "INSERT INTO signup VALUES('"+formno+"',"
+                        + " '"+name+"', '"+fname+"','"+dob+"', '"+gender+"',"
+                        + " '"+email+"', '"+marital+"', '"+address+"',"
+                        + " '"+city+"', '"+pin+"', '"+state+"')";
                 c.s.executeUpdate(query);
+                
+                setVisible(false);
+                new SignupTwo(formno).setVisible(true);
             }
         } catch (Exception e){
             System.out.println(e);
