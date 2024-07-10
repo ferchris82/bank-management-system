@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class Transactions extends JFrame implements ActionListener{
     
-    JButton deposit, withdrawl, ministatement, pinchange, fastcash, balanceenquiry, exit;
+    JButton deposit, withdraw, ministatement, pinchange, fastcash, balanceenquiry, exit;
     String pinnumber; 
     Transactions(String pinnumber){
         this.pinnumber = pinnumber;
@@ -30,10 +30,10 @@ public class Transactions extends JFrame implements ActionListener{
         deposit.addActionListener(this);
         image.add(deposit);
       
-        withdrawl = new JButton("Cash Withdrawl");
-        withdrawl.setBounds(355, 415, 150, 30);
-        withdrawl.addActionListener(this);
-        image.add(withdrawl);
+        withdraw = new JButton("Cash Withdrawl");
+        withdraw.setBounds(355, 415, 150, 30);
+        withdraw.addActionListener(this);
+        image.add(withdraw);
       
         fastcash = new JButton("Fast Cash");
         fastcash.setBounds(170, 450, 150, 30);
@@ -69,6 +69,12 @@ public class Transactions extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == exit){
             System.exit(0);
+        } else if(ae.getSource() == deposit){
+            setVisible(false);
+            new Deposit(pinnumber).setVisible(true);
+        } else if(ae.getSource() == withdraw){
+            setVisible(false);
+            new Withdraw(pinnumber).setVisible(true);
         }
     }
     
